@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gorgeous Girl | Web Design Code</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Additional CSS for button positioning */
+        .yes-btn {
+            position: absolute;
+            left: 500px; /* Adjust the left position as needed */
+        }
+
+        .no-btn {
+            position: absolute;
+            right: 500px; /* Adjust the right position as needed */
+        }
+    </style>
+</head>
+<body>
+
+   <div class="wrapper">
+        <h2 class="question">Will you go out with me after u turn 18?</h2>
+        <img class="gif" alt="gif" src="images/first.gif">
+        <div class="btn-group">
+            <button class="yes-btn">Yes</button>
+            <button class="no-btn">No</button>
+        </div>
+    </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const yesBtn = document.querySelector(".yes-btn");
+        const gif = document.querySelector(".gif");
+        const question = document.querySelector(".question");
+
+        let clicked = false; // Flag to track if Yes button was clicked
+
+        const noGifs = ["images/jumpcat.gif", "images/toby.gif", "images/gone.gif", "images/crydude.gif", "images/cryboy.gif", "images/cryguy.gif"];
+
+        const noBtn = document.querySelector(".no-btn");
+
+        noBtn.addEventListener("mouseover", function() {
+            const randomIndex = Math.floor(Math.random() * noGifs.length);
+            gif.src = noGifs[randomIndex];
+        });
+
+        yesBtn.addEventListener("click", function() {
+            if (!clicked) {
+                gif.src = "images/third.gif";
+                question.textContent = "Yay, see you next Sunday!";
+                clicked = true;
+            } else {
+                gif.src = "images/hg.gif";
+                question.textContent = "Thank you <3";
+            }
+        });
+
+        noBtn.addEventListener("mouseover", function() {
+            const maxX = window.innerWidth - noBtn.offsetWidth;
+            const maxY = window.innerHeight - noBtn.offsetHeight;
+
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+
+            noBtn.style.left = randomX + "px";
+            noBtn.style.top = randomY + "px";
+        });
+    });
+</script>
+</body>
+</html>
